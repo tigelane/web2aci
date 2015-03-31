@@ -42,7 +42,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptool
 ###########
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git
 
-
 ###############
 # ACI Toolkit #
 ###############
@@ -51,23 +50,12 @@ RUN git clone https://github.com/datacenter/acitoolkit.git
 WORKDIR /opt/acitoolkit
 RUN python setup.py install
 
-# By default when this container runs, simply start apache.
-CMD /usr/sbin/apache2ctl -D FOREGROUND
-
-###########
-# ACIWebTools
-###########
-WORKDIR /var/www
-RUN git clone https://github.com/kecorbin/aciwebtools.git
-
 #########
 # Testing Stuff
 #########
 RUN mv /var/www/html/index.html /var/www
 RUN mkdir /var/www/cgi-bin
 ADD cgi-bin /var/www/cgi-bin
-ADD credentials.py /opt/acitoolkit/credentials.py
 
-
-###########
-#  Message to the user.
+# By default when this container runs, simply start apache.
+CMD /usr/sbin/apache2ctl -D FOREGROUND
