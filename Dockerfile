@@ -51,11 +51,12 @@ WORKDIR /opt/acitoolkit
 RUN python setup.py install
 
 #########
-# Testing Stuff
+# Install Tige's Stuff!  Web2ACI
 #########
 RUN mv /var/www/html/index.html /var/www
 RUN mkdir /var/www/cgi-bin
 ADD cgi-bin /var/www/cgi-bin
+ADD www /var/www
 
 # By default when this container runs, simply start apache.
 CMD -d -p 80:80 /usr/sbin/apache2ctl -D FOREGROUND
