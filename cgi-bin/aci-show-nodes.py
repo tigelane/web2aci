@@ -51,5 +51,5 @@ for phy_class in phy_classes:
     items = phy_class.get(session)
     for item in items:
         print(item.info())
-    print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
-    print '</pre>'
+print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
+print '</pre>'
