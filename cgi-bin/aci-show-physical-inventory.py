@@ -48,5 +48,5 @@ for pod in pods:
     print(pod_name)
     print('=' * len(pod_name))
     print_inventory(pod)
-    print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
-    print '</pre>'
+print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
+print '</pre>'

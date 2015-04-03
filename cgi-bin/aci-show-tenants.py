@@ -42,5 +42,5 @@ print("------")
 tenants = ACI.Tenant.get(session)
 for tenant in tenants:
     print(tenant.name)
-    print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
-    print '</pre>'
+print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
+print '</pre>'
