@@ -53,4 +53,6 @@ print(template.format("Tenant", "Context"))
 print(template.format("------", "-------"))
 for rec in data:
     print(template.format(*rec))
-    print '\n'
+
+print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
+print '</pre>'

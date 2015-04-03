@@ -59,7 +59,8 @@ def main():
     print(template.format("------", "--------"))
     for rec in data:
         print template.format(*rec)
-        print '<br>'
+    print '<p><p><button onclick="goBack()">Go Back</button><script>function goBack() { window.history.back(); } </script>'
+    print '</pre>'
 
 if __name__ == '__main__':
     try:
