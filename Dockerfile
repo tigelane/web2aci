@@ -58,4 +58,4 @@ RUN mkdir /var/www/cgi-bin
 ADD cgi-bin /var/www/cgi-bin
 
 # By default when this container runs, simply start apache.
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+CMD -d -p 80:80 /usr/sbin/apache2ctl -D FOREGROUND
