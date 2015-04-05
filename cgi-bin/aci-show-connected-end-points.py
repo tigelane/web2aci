@@ -48,7 +48,7 @@ def main():
     # Download all of the end points (devices connected to the fabric)
     # and store the data as tuples in a list
     data = []
-    endpoints = ACI.Endpoint.get(session)
+    endpoints = aci.Endpoint.get(session)
     for ep in endpoints:
         epg = ep.get_parent()
         app_profile = epg.get_parent()
