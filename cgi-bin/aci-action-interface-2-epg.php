@@ -5,7 +5,7 @@
 
 <p>
 <p>
-<TABLE align="center" bgcolor="#990033" border="3"  BORDERCOLOR="#990033">
+<TABLE align="center" bgcolor="#FFFFFF" border="3"  BORDERCOLOR="#FF2200">
 <TR><TD align="center" style="font-size: 24px"><font color="#FFB310">Web 2 ACI - Interface to EPG</font>
 </table>
 <p>
