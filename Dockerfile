@@ -35,7 +35,7 @@ ADD site-enabled.conf /etc/apache2/sites-enabled/000-default.conf
 ###########
 # PYTHON #
 ###########
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptools python-pip python-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptools python-pip
 
 ###########
 # GIT #
