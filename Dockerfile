@@ -30,12 +30,12 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 EXPOSE 80
 
 # Update the default apache site with the config we created.
-ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
+ADD site-enabled.conf /etc/apache2/sites-enabled/000-default.conf
 
 ###########
 # PYTHON #
 ###########
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptools python-pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptools python-pip python-dev libapache2-mod-python
 
 ###########
 # GIT #
@@ -51,11 +51,10 @@ WORKDIR /opt/acitoolkit
 RUN python setup.py install
 
 #########
-# Install Tige's Stuff!  Web2ACI
+# Install Tige's Stuff!  web2aci
 #########
 RUN mv /var/www/html/index.html /var/www
-RUN mkdir /var/www/cgi-bin
-ADD cgi-bin /var/www/cgi-bin
+RUN mkdir /var/www/cgi-bin; mkdir /var/www/python
 ADD www /var/www
 ADD credentials.py /usr/lib/python2.7/dist-packages/
 
