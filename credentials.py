@@ -1,7 +1,7 @@
 # Fill in with the APIC admin userid
-LOGIN = 'tige'
+LOGIN = 'ro_apiuser'
 # Fill in with the APIC admin password
-PASSWORD = 'Cisco098'
+PASSWORD = 'ro_apiuser'
 # Fill in with the APIC IP address
 IPADDR = '10.93.130.125'
 # URL = 'http://' + IPADDR + ''
