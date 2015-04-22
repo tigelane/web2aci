@@ -39,17 +39,76 @@ def setuplogin():
 	    <LABEL for="ipaddr">IP Address or Hostname</LABEL>
 	    <INPUT type="text" name="host"><BR>
 	    <LABEL for="user">User ID</LABEL>
-	    <INPUT type="text" name="host"><BR>
+	    <INPUT type="text" name="user"><BR>
 	    <LABEL for="pass">Password</LABEL>
 	    <INPUT type="password" name="password"><BR>
-	    <INPUT type="radio" name="proto" value=0>HTTP<BR>
-	    <INPUT type="radio" name="proto" value=1>HTTPS<BR>
+	    <INPUT type="radio" name="proto" value=0>HTTP - 80<BR>
+	    <INPUT type="radio" name="proto" value=1>HTTPS - 443<BR>
         <BR>
 	    <INPUT type="submit" value="Send"> <INPUT type="reset">
     </FORM>
     '''
     
     return html + footer()
+
+def setuplogin_info():
+    casesens = 0
+    login()
+    info = req.form
+    
+	
+    try:
+        ipaddr = info['ipaddr']
+        user = info['user']
+        password = info['password']        
+        proto = info['proto']
+        
+    except:
+        html = '''
+        <html><head>
+        <title>Searching APIC</title>
+        </head>
+        <body>
+        <h2>There was a problem with the information.  Please try again.</h2>
+        <hr>
+        '''
+        return html + footer()
+    
+    #Create the new credentials.py file
+    credsfilename = '/usr/local/lib/python2.7/dist-packages/credentials.py'
+    try:
+        credsfile = open(credsfilename, w)
+    except:
+        html = '''
+        <html><head>
+        <title>Searching APIC</title>
+        </head>
+        <body>
+        <h2>There was a problem opening %s  Please try again.</h2>
+        <hr>
+        ''' % (credsfilename)
+        return html + footer()
+    
+    credsfile.write("IPADDR = '%s'" % (ipaddr))
+    credsfile.write("LOGIN = '%s'"% (user))
+    credsfile.write("PASSWORD = '%s'"% (password))
+    if proto:
+        credsfile.write("URL = 'https://%s:443/'"% (ipaddr))
+    else:
+        credsfile.write("URL = 'http://%s/'"% (ipaddr))
+    
+    
+    # HTML Text return
+    html = '''
+    <html><head>
+    <title>Login information</title>
+    </head>
+    <body>
+    <h2>Your login information has been accepted, but has not been tested yet.</h2>
+    <hr>
+    '''
+    return html + footer()
+
 
 def search4host():
     html = '''
