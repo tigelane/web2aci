@@ -18,8 +18,6 @@ def login():
     
 def footer():
     html = '''
-    <p>
-    <p>
     <button onclick="goBack()">Go Back</button>
     <script>function goBack() { window.history.back(); } </script>
     </pre>
@@ -48,7 +46,6 @@ def search4host():
 	    <INPUT type="radio" name="case" value=1>Case Sensitive<BR>
         <BR>
 	    <INPUT type="submit" value="Send"> <INPUT type="reset">
-    </P>
     </FORM>
     '''
     
@@ -107,5 +104,6 @@ def search4host_info(req):
                 html += (template.format(*rec)) + '<br>'
 
     html += '</pre>'
+    html += '<p><p>'
     html += footer()
     return html
