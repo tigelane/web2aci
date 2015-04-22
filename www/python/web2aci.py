@@ -65,10 +65,7 @@ def search4host_info(req):
         casesens = 1
     except:
         pass
-    
-    # Header for all pages
-    html = header()
-    
+        
     # Header for this page
     html += '''
     <html><head>
