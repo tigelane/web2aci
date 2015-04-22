@@ -51,7 +51,7 @@ def setuplogin():
     
     return html + footer()
 
-def setuplogin_info():
+def setuplogin_info(req):
     info = req.form
     
     try:
