@@ -36,7 +36,7 @@ def setuplogin():
     <h2>Please enter the following:</h2>
     <FORM value="form" action="setuplogin_info" method="post">
     <P>
-	    <LABEL for="ipaddr">IP Address or Hostname</LABEL>
+	    <LABEL for="host">IP Address or Hostname</LABEL>
 	    <INPUT type="text" name="host"><BR>
 	    <LABEL for="user">User ID</LABEL>
 	    <INPUT type="text" name="user"><BR>
@@ -55,7 +55,7 @@ def setuplogin_info(req):
     info = req.form
     
     try:
-        ipaddr = info['ipaddr']
+        ipaddr = info['host']
         user = info['user']
         password = info['password']        
         proto = info['proto']
