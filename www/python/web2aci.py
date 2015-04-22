@@ -25,7 +25,32 @@ def footer():
     </html>
     '''
     return html
+
+def setuplogin():
+        html = '''
+    <html><head>
+    <title>Login to APIC</title>
+    </head>
+    <body>
+    <center>
+    <h2>Please enter the following:</h2>
+    <FORM value="form" action="setuplogin_info" method="post">
+    <P>
+	    <LABEL for="ipaddr">IP Address or Hostname</LABEL>
+	    <INPUT type="text" name="host"><BR>
+	    <LABEL for="user">User ID</LABEL>
+	    <INPUT type="text" name="host"><BR>
+	    <LABEL for="pass">Password</LABEL>
+	    <INPUT type="password" name="password"><BR>
+	    <INPUT type="radio" name="proto" value=0>HTTP<BR>
+	    <INPUT type="radio" name="proto" value=1>HTTPS<BR>
+        <BR>
+	    <INPUT type="submit" value="Send"> <INPUT type="reset">
+    </FORM>
+    '''
     
+    return html + footer()
+
 def search4host():
     html = '''
     <html><head>
