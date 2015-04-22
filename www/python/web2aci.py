@@ -74,7 +74,7 @@ def setuplogin_info(req):
     #Create the new credentials.py file
     credsfilename = '/usr/local/lib/python2.7/dist-packages/credentials.py'
     try:
-        credsfile = open(credsfilename, w)
+        credsfile = open(credsfilename, "w")
     except:
         html = '''
         <html><head>
