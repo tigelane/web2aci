@@ -27,7 +27,7 @@ def footer():
     return html
 
 def setuplogin():
-        html = '''
+    html = '''
     <html><head>
     <title>Login to APIC</title>
     </head>
