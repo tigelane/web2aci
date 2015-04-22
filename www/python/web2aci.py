@@ -52,11 +52,8 @@ def setuplogin():
     return html + footer()
 
 def setuplogin_info():
-    casesens = 0
-    login()
     info = req.form
     
-	
     try:
         ipaddr = info['ipaddr']
         user = info['user']
