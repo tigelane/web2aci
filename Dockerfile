@@ -58,6 +58,7 @@ RUN mv /var/www/html/index.html /var/www
 RUN mkdir /var/www/cgi-bin; mkdir /var/www/python
 ADD www /var/www
 ADD credentials.py /usr/local/lib/python2.7/dist-packages/
+RUN chmod 666 /usr/local/lib/python2.7/dist-packages/credentials.py
 
 
 # By default when this container runs, simply start apache.
