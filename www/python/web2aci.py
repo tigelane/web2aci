@@ -86,11 +86,11 @@ def setuplogin_info(req):
         ''' % (credsfilename)
         return html + footer()
     
-    credsfile.write("IPADDR = '%s'\n" % (ipaddr))
     credsfile.write("LOGIN = '%s'\n"% (user))
     credsfile.write("PASSWORD = '%s'\n"% (password))
+    credsfile.write("IPADDR = '%s'\n" % (ipaddr))
     if proto:
-        credsfile.write("URL = 'https://%s:443/'\n"% (ipaddr))
+        credsfile.write("URL = 'https://%s/'\n"% (ipaddr))
     else:
         credsfile.write("URL = 'http://%s/'\n"% (ipaddr))
     
