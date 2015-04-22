@@ -35,7 +35,7 @@ ADD site-enabled.conf /etc/apache2/sites-enabled/000-default.conf
 ###########
 # PYTHON #
 ###########
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptools python-pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python2.7 python-setuptools python-pip python-dev libapache2-mod-python
 
 ###########
 # GIT #
@@ -54,7 +54,8 @@ RUN python setup.py install
 # Install Tige's Stuff!  web2aci
 #########
 RUN mv /var/www/html/index.html /var/www
-RUN mkdir /var/www/cgi-bin; mkdir /var/www/python
+RUN mkdir /var/www/cgi-bin
+RUN mkdir /var/www/python
 ADD www /var/www
 ADD credentials.py /usr/lib/python2.7/dist-packages/
 
