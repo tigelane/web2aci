@@ -67,7 +67,7 @@ def search4host_info(req):
         pass
         
     # Header for this page
-    html += '''
+    html = '''
     <html><head>
     <title>Searching APIC</title>
     </head>
