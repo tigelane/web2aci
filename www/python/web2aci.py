@@ -29,7 +29,7 @@ def footer():
     return html
     
 def search4host():
-    return '''
+    html = '''
     <html><head>
     <title>Search for a host</title>
     </head>
@@ -50,9 +50,9 @@ def search4host():
 	    <INPUT type="submit" value="Send"> <INPUT type="reset">
     </P>
     </FORM>
-    </body>
-    </html>
     '''
+    
+    return html + footer()
 
 def search4host_info(req):
     casesens = 0
