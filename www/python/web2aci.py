@@ -15,6 +15,8 @@ def login():
     if not resp.ok:
         print('%% Could not login to APIC')
         sys.exit(0)
+    else:
+        return 1
     
 def footer():
     html = '''
@@ -93,7 +95,12 @@ def setuplogin_info(req):
         credsfile.write("URL = 'https://%s'\n"% (ipaddr))
     else:
         credsfile.write("URL = 'http://%s'\n"% (ipaddr))
+    credsfile.close()
     
+    if login():
+        response = "Your login information has been accepted and a test login was completed."
+    else:
+        response = "ERROR: A test login failed."
     
     # HTML Text return
     html = '''
@@ -101,9 +108,9 @@ def setuplogin_info(req):
     <title>Login information</title>
     </head>
     <body>
-    <h2>Your login information has been accepted, but has not been tested yet.</h2>
+    <h2>%s</h2>
     <hr>
-    '''
+    ''' %(response)
     return html + footer()
 
 
