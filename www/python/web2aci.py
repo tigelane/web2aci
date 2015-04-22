@@ -13,8 +13,7 @@ def login():
     session = aci.Session(args.url, args.login, args.password)
     resp = session.login()
     if not resp.ok:
-        print('%% Could not login to APIC')
-        sys.exit(0)
+        return 0
     else:
         return 1
     
