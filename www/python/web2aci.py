@@ -43,6 +43,7 @@ def setuplogin():
     </head>
     <body>
     <center>
+    %s
     <h2>Please enter the following:</h2>
     <FORM value="form" action="setuplogin_info" method="post">
     <P>
