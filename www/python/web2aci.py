@@ -8,9 +8,9 @@ def check_connection():
     creds = aci.Credentials('apic', description)
     args = creds.get()
     if login():
-        connected = 'You are connected to an APIC at:<pre>   %s   </pre>as user:<pre>   %s</pre><p>' %(args.url, args.login)
+        connected = 'You are connected to an APIC at:   %s   as user:   %s<p>' %(args.url, args.login)
     else:
-        connected = 'Your current APIC information does not work for server:<pre>   %s   </pre>as user:<pre>   %s</pre><p>'   
+        connected = 'Your current APIC information does not work for server:   %s   as user:   %s<p>'   
     
     return connected 
 
