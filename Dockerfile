@@ -49,6 +49,12 @@ WORKDIR /opt
 RUN git clone https://github.com/datacenter/acitoolkit.git
 WORKDIR /opt/acitoolkit
 RUN python setup.py install
+RUN sudo pip install -U Sphinx
+WORKDIR /opt/acitoolit/docs
+RUN make html; mkdir /var/www/acitoolkitdocs
+WORKDIR /opt/acitoolkit
+RUN cp -R docsbuild/html/* /var/www/acitoolkitdocs/; rm -R docsbuild/
+
 
 #########
 # Install Tige's Stuff!  web2aci
