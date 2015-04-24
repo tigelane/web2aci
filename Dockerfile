@@ -55,7 +55,6 @@ RUN make html; mkdir /var/www/acitoolkitdocs
 WORKDIR /opt/acitoolkit
 RUN cp -R docsbuild/html/* /var/www/acitoolkitdocs/; rm -R docsbuild/
 
-
 #########
 # Install Tige's Stuff!  web2aci
 #########
