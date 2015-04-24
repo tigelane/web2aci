@@ -3,6 +3,17 @@ import sys
 
 session = ''
 
+def check_connection():
+    description = ('Simple tools to access information in an ACI network via a web interfaces.')
+    creds = aci.Credentials('apic', description)
+    args = creds.get()
+    if login():
+        connected = 'You are connected to an APIC at %s as %s<p>' %(args.url, args.login)
+    else:
+        connected = 'Your current APIC information does not work for server: %s as user: %s<p>'   
+    
+    return connected 
+
 def login():
     global session
     description = ('Simple tools to access inofrmation in an ACI network via a web interfaces.')
@@ -28,15 +39,8 @@ def footer():
     return html
 
 def setuplogin():
-    connected = ''
-    description = ('Simple tools to access inofrmation in an ACI network via a web interfaces.')
-    creds = aci.Credentials('apic', description)
-    args = creds.get()
-    if login():
-        connected = 'You are connected to %s as %s<p>' %(args.url, args.login)
-    else:
-        connected = 'Your current information does not work for server: %s as user: %s<p>'        
-        
+    connected = check_connection()
+    
     html = '''
     <html><head>
     <title>Login to APIC</title>
@@ -124,12 +128,15 @@ def setuplogin_info(req):
 
 
 def search4host():
+    connected = check_connection()
+    
     html = '''
     <html><head>
     <title>Search for a host</title>
     </head>
     <body>
     <center>
+    %s
     <h2>Search for a host</h2><pre>
     <h3>You can enter anything from the following example as a search:</h3>
     MACADDRESS          IPADDRESS         INTERFACE       ENCAP      TENANT     APP PROFILE        EPG
@@ -144,7 +151,7 @@ def search4host():
         <BR>
 	    <INPUT type="submit" value="Send"> <INPUT type="reset">
     </FORM>
-    '''
+    ''' % (connected)
     
     return html + footer()
 
