@@ -28,6 +28,13 @@ def footer():
     return html
 
 def setuplogin():
+    connected = ''
+    args = creds.get()
+    if login():
+        connected = 'You are connected to %s as %s<p>' %(args.url, args.login)
+    else:
+        connected = 'Your current information does not work for server: %s as user: %s<p>'        
+        
     html = '''
     <html><head>
     <title>Login to APIC</title>
@@ -48,7 +55,7 @@ def setuplogin():
         <BR>
 	    <INPUT type="submit" value="Send"> <INPUT type="reset">
     </FORM>
-    '''
+    ''' %(connected)
     
     return html + footer()
 
