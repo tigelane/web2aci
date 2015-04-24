@@ -29,6 +29,8 @@ def footer():
 
 def setuplogin():
     connected = ''
+    description = ('Simple tools to access inofrmation in an ACI network via a web interfaces.')
+    creds = aci.Credentials('apic', description)
     args = creds.get()
     if login():
         connected = 'You are connected to %s as %s<p>' %(args.url, args.login)
