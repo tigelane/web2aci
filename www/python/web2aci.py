@@ -126,8 +126,13 @@ def setuplogin_info(req):
     ''' %(response)
     return html + footer()
 
-def all_tenants():
+def ajax_all_tenants():
     login()
+    tenants = Tenant.get(session)
+    return (tenant.name for tenant in tenants)
+
+    
+    '''
     html = '''
     <html><head>
     <title>View all Tenants</title>
@@ -140,8 +145,9 @@ def all_tenants():
     for tenant in tenants:
         html += tenant.name + '<br>'
 
-    return html + footer()
-
+    
+    return html + '<p><p>' + footer()
+    '''
 def search4host():
     connected = check_connection()
     
