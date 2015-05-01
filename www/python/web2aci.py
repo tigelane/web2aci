@@ -3,6 +3,7 @@ from acitoolkit.acitoolkit import Credentials, Tenant, AppProfile, EPG, EPGDomai
 from acitoolkit.acitoolkit import Context, BridgeDomain, Contract, FilterEntry
 import sys
 
+args = ''
 session = ''
 
 def footer():
@@ -24,7 +25,7 @@ def check_connection():
     return connected 
 
 def login():
-    global session
+    global session, args
     description = ('Simple tools to access inofrmation in an ACI network via a web interfaces.')
     creds = Credentials('apic', description)
     args = creds.get()
