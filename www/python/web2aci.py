@@ -131,23 +131,6 @@ def ajax_all_tenants():
     tenants = Tenant.get(session)
     return (tenant.name for tenant in tenants)
 
-    
-    '''
-    html = '''
-    <html><head>
-    <title>View all Tenants</title>
-    </head>
-    <body>
-    TENANTS<br>
-    ------<br> '''
-    
-    tenants = Tenant.get(session)
-    for tenant in tenants:
-        html += tenant.name + '<br>'
-
-    
-    return html + '<p><p>' + footer()
-    '''
 def search4host():
     connected = check_connection()
     
