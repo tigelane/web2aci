@@ -129,18 +129,16 @@ def setuplogin_info(req):
 def all_tenants():
     html = '''
     <html><head>
-    <title>Login to APIC</title>
+    <title>View all Tenants</title>
     </head>
     <body>
-    <pre>
-    TENANT<br>
+    TENANTS<br>
     ------<br> '''
     
     tenants = Tenant.get(session)
     for tenant in tenants:
         html += tenant.name + '<br>'
 
-    html += '</pre>'
     return html + footer()
 
 def search4host():
