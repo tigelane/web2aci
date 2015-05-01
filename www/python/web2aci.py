@@ -127,6 +127,7 @@ def setuplogin_info(req):
     return html + footer()
 
 def all_tenants():
+    login()
     html = '''
     <html><head>
     <title>View all Tenants</title>
