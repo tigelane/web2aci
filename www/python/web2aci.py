@@ -1,4 +1,4 @@
-import acitoolkit.acitoolkit as aci
+from acitoolkit.acisession import Credentials, Session, Tenant, Endpoint
 import sys
 
 session = ''
@@ -14,9 +14,6 @@ def footer():
     return html
 
 def check_connection():
-    description = ('Simple tools to access information in an ACI network via a web interfaces.')
-    creds = aci.Credentials('apic', description)
-    args = creds.get()
     if login():
         connected = 'You are connected to an APIC at:   %s   as user:   %s<p>' %(args.url, args.login)
     else:
@@ -27,11 +24,11 @@ def check_connection():
 def login():
     global session
     description = ('Simple tools to access inofrmation in an ACI network via a web interfaces.')
-    creds = aci.Credentials('apic', description)
+    creds = Credentials('apic', description)
     args = creds.get()
 
     # Login to APIC
-    session = aci.Session(args.url, args.login, args.password)
+    session = Session(args.url, args.login, args.password)
     resp = session.login()
     if not resp.ok:
         return 0
@@ -137,7 +134,7 @@ def all_tenants():
     TENANT<br>
     ------<br> '''
     
-    tenants = ACI.Tenant.get(session)
+    tenants = Tenant.get(session)
     for tenant in tenants:
         html += tenant.name + '<br>'
 
@@ -197,7 +194,7 @@ def search4host_info(req):
     
 
     data = []
-    endpoints = aci.Endpoint.get(session)
+    endpoints = Endpoint.get(session)
     for ep in endpoints:
         epg = ep.get_parent()
         app_profile = epg.get_parent()
@@ -257,4 +254,3 @@ def add_contract():
     ''' %(connected)
     
     return html + footer()
-
