@@ -1,4 +1,6 @@
-from acitoolkit.acisession import Credentials, Session, Tenant, Endpoint
+from acitoolkit.acisession import Session
+from acitoolkit.acitoolkit import Credentials, Tenant, AppProfile, EPG, EPGDomain
+from acitoolkit.acitoolkit import Context, BridgeDomain, Contract, FilterEntry
 import sys
 
 session = ''
