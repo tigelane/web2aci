@@ -132,7 +132,6 @@ def all_tenants():
     <title>Login to APIC</title>
     </head>
     <body>
-    <center>
     <pre>
     TENANT<br>
     ------<br> '''
