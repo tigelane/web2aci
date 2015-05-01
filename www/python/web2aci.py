@@ -3,6 +3,16 @@ import sys
 
 session = ''
 
+def footer():
+    html = '''
+    <button onclick="goBack()">Go Back</button>
+    <script>function goBack() { window.history.back(); } </script>
+    </pre>
+    </body>
+    </html>
+    '''
+    return html
+
 def check_connection():
     description = ('Simple tools to access information in an ACI network via a web interfaces.')
     creds = aci.Credentials('apic', description)
@@ -27,16 +37,6 @@ def login():
         return 0
     else:
         return 1
-    
-def footer():
-    html = '''
-    <button onclick="goBack()">Go Back</button>
-    <script>function goBack() { window.history.back(); } </script>
-    </pre>
-    </body>
-    </html>
-    '''
-    return html
 
 def setuplogin():
     connected = check_connection()
@@ -126,6 +126,23 @@ def setuplogin_info(req):
     ''' %(response)
     return html + footer()
 
+def all_tenants():
+    html = '''
+    <html><head>
+    <title>Login to APIC</title>
+    </head>
+    <body>
+    <center>
+    <pre>
+    TENANT<br>
+    ------<br> '''
+    
+    tenants = ACI.Tenant.get(session)
+    for tenant in tenants:
+        html += tenant.name + '<br>'
+
+    html += '</pre>'
+    return html + footer()
 
 def search4host():
     connected = check_connection()
@@ -211,3 +228,33 @@ def search4host_info(req):
     html += '<p><p>'
     html += footer()
     return html
+    
+def add_contract():
+    connected = check_connection()
+    
+    
+    html = '''
+    <html><head>
+    <title>Login to APIC</title>
+    </head>
+    <body>
+    <center>
+    %s
+    <h2>Please enter the following:</h2>
+    <FORM value="form" action="setuplogin_info" method="post">
+    <P>
+	    <LABEL for="host">IP Address or Hostname</LABEL>
+	    <INPUT type="text" name="host"><BR>
+	    <LABEL for="user">User ID</LABEL>
+	    <INPUT type="text" name="user"><BR>
+	    <LABEL for="pass">Password</LABEL>
+	    <INPUT type="password" name="password"><BR>
+	    <INPUT type="radio" name="proto" value=0>HTTP - 80<BR>
+	    <INPUT type="radio" name="proto" value=1>HTTPS - 443<BR>
+        <BR>
+	    <INPUT type="submit" value="Send"> <INPUT type="reset">
+    </FORM>
+    ''' %(connected)
+    
+    return html + footer()
+
