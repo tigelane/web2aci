@@ -243,4 +243,9 @@ def add_contract():
 def ajax_all_tenants():
     login()
     tenants = Tenant.get(session)
-    return list(tenant.name for tenant in tenants)
+    tenant_list = list(tenant.name for tenant in tenants)
+    tenant_return = ''
+    for tenant in tenant_list:
+        tenant_return += tenant + '\n'
+        
+    return tenant_return
