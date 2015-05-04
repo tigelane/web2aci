@@ -126,11 +126,6 @@ def setuplogin_info(req):
     ''' %(response)
     return html + footer()
 
-def ajax_all_tenants():
-    login()
-    tenants = Tenant.get(session)
-    return (tenant.name for tenant in tenants)
-
 def search4host():
     connected = check_connection()
     
@@ -244,3 +239,8 @@ def add_contract():
     ''' %(connected)
     
     return html + footer()
+    
+def ajax_all_tenants():
+    login()
+    tenants = Tenant.get(session)
+    return list(tenant.name for tenant in tenants)
