@@ -12,7 +12,7 @@ echo date('l j \of F Y h:i:s A');
 echo '<p>';
 
 echo 'The Server IP Address is: ';
-echo $_SERVER['SERVER_ADDR'];
+echo $_SERVER['HTTP_HOST'];
 echo'<p>';
 
 echo "You are connecting from: ";
