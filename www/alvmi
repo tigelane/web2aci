@@ -10,7 +10,7 @@ sudo apt-get -y install git
 sudo apt-get install python-setuptools
 git clone https://github.com/tigelane/system_utilities.git
 sudo apt-get -y install docker.io
-# Modify the last line to reflect the proper username if needed (I’lll try to get it here)
+# Modify the last line to reflect the proper username if needed (I will try to get it here)
 sudo usermod -aG docker $USER
 
 # Install the docker containers
