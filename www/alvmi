@@ -1,0 +1,29 @@
+# Install commands to get this file
+# wget http://52.27.152.111/alvmi
+# chmod 744 alvmi
+# ./alvmi
+
+# Update and install base items
+sudo apt-get update
+sudo apt-get install -y openssh-server
+sudo apt-get -y install git
+sudo apt-get install python-setuptools
+git clone https://github.com/tigelane/system_utilities.git
+sudo apt-get -y install docker.io
+# Modify the last line to reflect the proper username if needed (I’lll try to get it here)
+sudo usermod -aG docker $USER
+
+# Install the docker containers
+sudo docker pull tigelane/web2aci
+sudo docker pull tigelane/webarya
+sudo docker pull dockercisco/aci
+
+# Start the docker containers ONCE on ports 80 and 8080
+# sudo docker run -p 80:80 -d tigelane/web2aci
+# sudo docker run -p 5000:5000 -d tigelane/webarya
+# sudo docker run -p 8080:80 -d dockercisco/aci
+
+# Start the docker containers FOREVER on ports 80 and 8080
+sudo docker run --restart=always -p 80:80 -d tigelane/web2aci
+sudo docker run --restart=always -d tigelane/webarya
+sudo docker run --restart=always -p 8080:80 -d dockercisco/aci
