@@ -20,8 +20,7 @@ of the physical nodes; both belonging to and connected to the
 fabric.
 """
 import sys
-from acitoolkit.acitoolkit import Session, Credentials
-from acitoolkit.aciphysobject import Node, ENode
+from acitoolkit.acitoolkit import Session, Credentials, Node, ExternalSwitch
 
 # Take login credentials from the command line if provided
 # Otherwise, take them from your environment variables file ~/.profile
@@ -37,7 +36,7 @@ if not resp.ok:
     sys.exit(0)
 
 # List of classes to get and print
-phy_classes = (Node, ENode)
+phy_classes = (Node, ExternalSwitch)
 print 'Content-type: text/html\n'
 print '<pre>'
 
