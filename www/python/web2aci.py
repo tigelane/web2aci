@@ -26,17 +26,20 @@ def check_connection():
 
 def login():
     global session, args
-    description = ('Simple tools to access inofrmation in an ACI network via a web interfaces.')
+    description = ('ACI access via a web interfaces.')
     creds = Credentials('apic', description)
     args = creds.get()
 
     # Login to APIC
-    session = Session(args.url, args.login, args.password)
-    resp = session.login()
-    if not resp.ok:
+    try:
+        session = Session(args.url, args.login, args.password)
+        resp = session.login()
+        if not resp.ok:
+            return 0
+        else:
+            return 1
+    except:
         return 0
-    else:
-        return 1
 
 def setuplogin():
     connected = check_connection()
